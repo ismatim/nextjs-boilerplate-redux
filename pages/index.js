@@ -19,17 +19,18 @@ class Home extends Component {
   }
 }
 
-/*Home.getInitialProps = async ({ reduxStore, req }) => {*/
-//const isServer = !!req;
+Home.getInitialProps = async ({ reduxStore, req }) => {
+  const isServer = !!req;
 
-//// DISPATCH ACTIONS HERE ONLY WITH `reduxStore.dispatch`
-//reduxStore.dispatch({ type: APP_LOAD });
-//return {};
-//};
+  // DISPATCH ACTIONS HERE ONLY WITH `reduxStore.dispatch`
+  reduxStore.dispatch({ type: APP_LOAD });
+  return {};
+};
 
+const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({});
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Home);
