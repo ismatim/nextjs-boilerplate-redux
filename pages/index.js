@@ -47,7 +47,6 @@ class Home extends Component {
     this.setState({ transactionValue: value });
   }
   render() {
-    debugger;
     return (
       <>
         <h1>Welcome Money Transaction Service!</h1>
@@ -77,7 +76,15 @@ Home.getInitialProps = async ({ reduxStore, req }) => {
   const res = await fetch('http://localhost:3001/api/get/transaction');
   const data = await res.json();
 
+  // DISPATCH ACTIONS HERE ONLY WITH `reduxStore.dispatch`
+  reduxStore.dispatch({ type: APP_LOAD });
   return { data };
 };
 
-export default Home;
+const mapStateToProps = state => state;
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
